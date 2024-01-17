@@ -1,113 +1,119 @@
-import Image from 'next/image'
+/** @format */
 
+import Image from "next/image";
+import Navbar from "./components/Navbar";
+import desktopImge from "@/assets/images/image-web-3-desktop.jpg";
+
+import retropcImg from "@/assets/images/image-retro-pcs.jpg";
+import laptopsImage from "@/assets/images/image-top-laptops.jpg";
+import gamingImg from "@/assets/images/image-gaming-growth.jpg";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className=" min-h-screen w-full ">
+      <main className="max-w-6xl flex flex-col gap-4  mx-auto px-3 pb-28">
+        <Navbar />
+        {/* main */}
+        <div className="w-full flex gap-4 flex-col sm:flex-row ">
+          {/* left side */}
+          <section className="sm:w-[60%] flex flex-col gap-4">
+            <Image src={desktopImge} alt="destop-img" />
+            <div className="flex gap-4 flex-col sm:flex-row     ">
+              {/* left  */}
+              <h2 className="sm:w-1/2 text-5xl font-bold">
+                The Bright Future of Web 3.0 ?
+              </h2>
+              {/* right */}
+              <div className="sm:w-1/2 flex h-full flex-col  gap-5 items-start">
+                <p className="text-gray-400 text-sm">
+                  We dive into the next evolution of the web that claims to put
+                  the power of the platforms back into the hands of the people.
+                  But is it really fulfilling its promise?
+                </p>
+                <button className=" px-4 py-2 bg-orange-600 text-white text-sm">
+                  READ MORE
+                </button>
+              </div>
+            </div>
+          </section>
+          {/* right side */}
+
+          <div className="sm:w-[40%] bg-slate-900 text-white px-4 pt-4 pb-5 flex flex-col gap-6">
+            <h1 className="text-yellow-400 text-3xl font-bold">New</h1>
+
+            <div className="flex flex-col  gap-4">
+              <section className="flex gap-2 flex-col">
+                <h2 className="text-lg font-bold">Hydrogen VS Electric Cars</h2>
+                <p className="text-gray-400 ">
+                  Will hydrogen-fueled cars ever catch up to EVs?
+                </p>
+              </section>
+              <div className="w-full h-[1px] bg-gray-500" />
+              <section className="flex gap-2 flex-col">
+                <h2 className="text-lg font-bold">
+                  {" "}
+                  The Downsides of AI Artistry
+                </h2>
+                <p className="text-gray-400 ">
+                  What are the possible adverse effects of on-demand AI image
+                  generation?
+                </p>
+              </section>
+              <div className="w-full h-[1px] bg-gray-500" />
+              <section className="flex gap-2 flex-col">
+                <h2 className="text-lg font-bold"> Is VC Funding Drying Up?</h2>
+                <p className="text-gray-400 ">
+                  Private funding by VC firms is down 50% YOY. We take a look at
+                  what that means.
+                </p>
+              </section>
+            </div>
+          </div>
         </div>
+
+        {/* cards */}
+        <section className=" flex flex-col sm:flex-row justify-between gap-3 ">
+          <Card
+            imgSrc={retropcImg}
+            nubmerText="01"
+            para=" Private funding by VC firms is down 50% YOY. We take a look at what that means."
+            title="  Reviving Retro PCs"
+          />
+          <Card
+            imgSrc={laptopsImage}
+            nubmerText="02"
+            para=" Our best picks for various needs and budgets. "
+            title="Top 10 Laptops of 2022"
+          />
+          <Card
+            imgSrc={gamingImg}
+            nubmerText="03"
+            para="  How the pandemic has sparked fresh opportunities. "
+            title="The Growth of Gaming"
+          />
+        </section>
+      </main>
+    </div>
+  );
+}
+
+type CardType = {
+  imgSrc: string | StaticImport;
+  nubmerText: string;
+  title: string;
+  para: string;
+};
+
+function Card({ imgSrc, nubmerText, title, para }: CardType) {
+  return (
+    <div className="flex gap-4 h-[150px] ">
+      <Image className=" w-[120px]" src={imgSrc} alt="card-img" />
+      {/* right div */}
+      <div className="flex flex-col  gap-2 w-[250px] justify-between">
+        <h2 className="text-3xl font-bold text-gray-300"> {nubmerText} </h2>
+        <h3 className=" font-bold text-xl"> {title}</h3>
+        <p className="text-gray-400"> {para}</p>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </div>
+  );
 }
